@@ -10,7 +10,6 @@ inventory:
 	python3 ./scripts/create_inventory.py
 website: tiles inventory
 	cp -R ./output ./map-editor/src/files
-	cp -R ./output ./
 
 
 
