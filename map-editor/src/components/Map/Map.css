@@ -1,6 +1,5 @@
 div .MapView {
     width: 75%;
-    background-color: yellowgreen;
     overflow: scroll;
     margin: 10px;
     border: 2px solid black;
