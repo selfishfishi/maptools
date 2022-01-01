@@ -1,0 +1,5 @@
+div .Editor {
+    margin: 10px;
+    border: 2px solid black;
+    flex: 1;
+}
