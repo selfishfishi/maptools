@@ -1,8 +1,9 @@
 import React from 'react';
+import './Map.css'
 
 class Map extends React.Component {
     get_row_indexes(){
-        return 2
+        return 17;
     }
     render_row(row_number){
 
@@ -11,7 +12,7 @@ class Map extends React.Component {
         for (let col in this.props.data) {
             let row_info = this.props.data[col][row_number];
             let image_src =  require('./../../files/' + row_info.path)
-            let image_element = (<img key={row_info.id} src={image_src}></img>)
+            let image_element = (<img className="MapTile" key={row_info.id} src={image_src}></img>)
             row.push(image_element)
         }
         return row
@@ -20,13 +21,13 @@ class Map extends React.Component {
         let row_count = this.get_row_indexes()
         let rows = [];
         for (let i = 0; i < row_count; i++) {
-            rows.push(<div key={i}>
+            rows.push(<div className="MapRow" key={i}>
                 {this.render_row(i)}
             </div>
                 );
         }
         return ( 
-            <div>{rows}</div> 
+            <div className="MapView">{rows}</div> 
         );
     }
 

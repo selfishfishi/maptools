@@ -1,0 +1,14 @@
+div .MapView {
+    overflow: scroll;
+    width: 70%;
+
+}
+div .MapRow {
+    overflow: visible;
+    white-space:nowrap;
+}
+
+div .MapRow .MapTile {
+    border: 2px solid black;
+    width: 5%;
+}
