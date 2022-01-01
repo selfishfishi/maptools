@@ -6,17 +6,7 @@ function App() {
   const map_data = require('./files/output/inventory.json')
   return (
     <div className="App">
-      <header className="App-header">
-        <Map data={map_data}></Map>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Map data={map_data}></Map>
     </div>
   );
 }
