@@ -1,12 +1,14 @@
 div .MapView {
     width: 70%;
-    background-color: aquamarine;
+    background-color: yellowgreen;
     overflow: scroll;
 
 }
 div .MapRow {
     overflow: visible;
     white-space:nowrap;
+    height: fit-content;
+    display: flex;
 }
 
 div .MapRow .MapTile {
