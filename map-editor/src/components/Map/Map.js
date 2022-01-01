@@ -1,5 +1,6 @@
 import React from 'react';
 import './Map.css'
+import MapTile from '../MapTile/MapTile';
 
 class Map extends React.Component {
     get_row_indexes(){
@@ -11,8 +12,7 @@ class Map extends React.Component {
         let row = []
         for (let col in this.props.data) {
             let row_info = this.props.data[col][row_number];
-            let image_src =  require('./../../files/' + row_info.path)
-            let image_element = (<img className="MapTile" key={row_info.id} src={image_src}></img>)
+            let image_element = (<MapTile key={row_info.id} data={row_info}></MapTile>)
             row.push(image_element)
         }
         return row
