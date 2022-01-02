@@ -12,7 +12,12 @@ class Map extends React.Component {
         let row = []
         for (let col in this.props.data) {
             let row_info = this.props.data[col][row_number];
-            let image_element = (<MapTile key={row_info.id} data={row_info}></MapTile>)
+            let image_element = (
+                <MapTile 
+                    key={row_info.id}
+                    data={row_info}>
+                </MapTile>
+            )
             row.push(image_element)
         }
         return row
