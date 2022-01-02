@@ -6,7 +6,6 @@ class PropertyEditor extends React.Component {
         let selected_items = []
         for (let i in this.props.selected) {
             let item = this.props.selected[i]
-            console.log(item)
             let selected = (
                 <li key={item.id}>
                     {item.id} @ {item.location}
@@ -16,7 +15,7 @@ class PropertyEditor extends React.Component {
         }
         return ( 
             <div className="Editor"> 
-            <p>selected tiles:</p>
+            <p><b>Selected Tiles:</b></p>
             {selected_items}</div> 
         );
     }
