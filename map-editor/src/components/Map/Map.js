@@ -8,7 +8,7 @@ class Map extends React.Component {
     }
 
     get_row_indexes(){
-        return 17;
+        return Object.keys(this.props.data[0]).length
     }
     render_row(row_number){
 
