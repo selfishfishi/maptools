@@ -1,18 +1,8 @@
-div .MapView {
-    width: 75%;
-    overflow: scroll;
-    margin: 10px;
-    border: 2px solid black;
-
-}
-div .MapRow {
-    overflow: visible;
-    white-space:nowrap;
-    height: fit-content;
-    display: flex;
-}
-
-div .MapRow .MapTile {
+.MapTile {
     border: 1px solid black;
     width: 4%;
+}
+
+.selected {
+    border: 1px solid red;
 }

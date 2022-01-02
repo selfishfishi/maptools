@@ -5,15 +5,19 @@ class MapTile extends React.Component {
     constructor(props) {
         super(props);
         this.handleSelect = this.handleSelect.bind(this)
+        this.state = {selected: false}
     }
     render() {
         let image_src =  require('./../../files/' + this.props.data.path)
         return ( 
-            <img onClick={this.handleSelect} className="MapTile" key={this.props.data.id} src={image_src}></img>
+            <img onClick={this.handleSelect} className={`MapTile ${this.state.selected ? 'selected' : ''}`} key={this.props.data.id} src={image_src}></img>
         );
     }
 
     handleSelect() {
+        this.setState((state, props) => ({
+            selected: !state.selected
+        }));
         console.log(this.props.data.path)
     }
 
