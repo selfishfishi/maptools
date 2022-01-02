@@ -15,10 +15,15 @@ class MapTile extends React.Component {
     }
 
     handleSelect() {
-        this.setState((state, props) => ({
-            selected: !state.selected
-        }));
-        console.log(this.props.data.path)
+        this.setState((state, props) => {
+            return {selected: !state.selected}
+        }, this.tileDidFlipState);
+    }
+
+    tileDidFlipState(){
+        if (this.props.tileClicked) {
+            this.props.tileClicked(this.props.data, this.state.selected)
+        }
     }
 
 }

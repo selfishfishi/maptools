@@ -3,6 +3,10 @@ import './Map.css'
 import MapTile from '../MapTile/MapTile';
 
 class Map extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
     get_row_indexes(){
         return 17;
     }
@@ -15,7 +19,8 @@ class Map extends React.Component {
             let image_element = (
                 <MapTile 
                     key={row_info.id}
-                    data={row_info}>
+                    data={row_info}
+                    tileClicked={this.props.tileClicked}>
                 </MapTile>
             )
             row.push(image_element)
