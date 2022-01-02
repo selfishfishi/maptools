@@ -21,7 +21,6 @@ class App extends react.Component {
   }
 
   handleTileClicked(tileInfo, selected) {
-    console.log(selected)
     if (selected) {
         this.setState((state, props) => {
           let new_selected = [...state.selected, tileInfo]
@@ -32,7 +31,6 @@ class App extends react.Component {
         let new_selected = state.selected.filter((value) => {
           return value.id != tileInfo.id
         });
-        console.log(new_selected)
         return {selected: new_selected} 
       });
 
