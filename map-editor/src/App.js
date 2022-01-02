@@ -25,9 +25,17 @@ class App extends react.Component {
     if (selected) {
         this.setState((state, props) => {
           let new_selected = [...state.selected, tileInfo]
-          console.log(new_selected)
           return {selected: new_selected} 
         });
+    } else {
+      this.setState((state, props) => {
+        let new_selected = state.selected.filter((value) => {
+          return value.id != tileInfo.id
+        });
+        console.log(new_selected)
+        return {selected: new_selected} 
+      });
+
     }
   }
 }
