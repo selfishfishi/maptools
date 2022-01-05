@@ -4,9 +4,19 @@ import "./PropertyEditor.css";
 class PropertyEditor extends React.Component {
   constructor(props) {
     super(props);
-    // this.handleTileClicked = this.handleTileClicked.bind(this);
-    // let map_data = require("./files/output/inventory.json");
-    this.state = { mintable: true };
+    let tile_properties = [
+      "wood",
+      "gold",
+      "iron",
+      "magic",
+      "stone",
+      "oil",
+      "water",
+    ];
+    this.state = { mintable: true, properties: {} };
+    tile_properties.forEach(
+      (e) => (this.state.properties[e] = { yield: 0, gen: 0 })
+    );
     this.handleInputChange = this.handleInputChange.bind(this);
   }
   render_selection() {
@@ -47,7 +57,31 @@ class PropertyEditor extends React.Component {
   }
 
   render_tile_properties() {
-    return [];
+    return Object.keys(this.state.properties).map((p) => (
+      <div key={p}>
+        <div>
+          <b>{p}</b>
+        </div>
+        <label key="yield">
+          Yield
+          <select value={this.state.value} onChange={this.handleChange}>
+            <option value="low">low</option>
+            <option value="medium">medium</option>
+            <option value="high">high</option>
+            <option value="ultra">ultra</option>
+          </select>
+        </label>
+        <label key="gen">
+          Gen
+          <select value={this.state.value} onChange={this.handleChange}>
+            <option value="low">low</option>
+            <option value="medium">medium</option>
+            <option value="high">high</option>
+            <option value="ultra">ultra</option>
+          </select>
+        </label>
+      </div>
+    ));
   }
   render_properties() {
     let properties = [];
