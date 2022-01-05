@@ -4,7 +4,7 @@ import "./PropertyEditor.css";
 class PropertyEditor extends React.Component {
   constructor(props) {
     super(props);
-    let tile_properties = [
+    this.tile_properties = [
       "wood",
       "gold",
       "iron",
@@ -13,8 +13,9 @@ class PropertyEditor extends React.Component {
       "oil",
       "water",
     ];
+    this.property_values = ["low", "medium", "high", "ultra-high"];
     this.state = { mintable: true, properties: {} };
-    tile_properties.forEach(
+    this.tile_properties.forEach(
       (e) => (this.state.properties[e] = { yield: 0, gen: 0 })
     );
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -57,6 +58,9 @@ class PropertyEditor extends React.Component {
   }
 
   render_tile_properties() {
+    const options = this.property_values.map((v) => (
+      <option value={v}>{v}</option>
+    ));
     return Object.keys(this.state.properties).map((p) => (
       <div key={p}>
         <div>
@@ -65,19 +69,13 @@ class PropertyEditor extends React.Component {
         <label key="yield">
           Yield
           <select value={this.state.value} onChange={this.handleChange}>
-            <option value="low">low</option>
-            <option value="medium">medium</option>
-            <option value="high">high</option>
-            <option value="ultra">ultra</option>
+            {options}
           </select>
         </label>
         <label key="gen">
           Gen
           <select value={this.state.value} onChange={this.handleChange}>
-            <option value="low">low</option>
-            <option value="medium">medium</option>
-            <option value="high">high</option>
-            <option value="ultra">ultra</option>
+            {options}
           </select>
         </label>
       </div>
