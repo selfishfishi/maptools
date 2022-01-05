@@ -15,14 +15,45 @@ class PropertyEditor extends React.Component {
     }
     return selected_items;
   }
+
+  render_mintable() {
+    return (
+      <label>
+        Mintable:
+        {/* <input
+          name="Mintable"
+          type="checkbox"
+          checked={this.state.isGoing}
+          onChange={this.handleInputChange}
+        /> */}
+        ;
+      </label>
+    );
+  }
+
+  render_tile_properties() {
+    return [];
+  }
+  render_properties() {
+    let properties = [];
+    properties.push(this.render_mintable());
+    properties.push(...this.render_tile_properties());
+    return properties;
+  }
+
   render() {
     let selected_items = this.render_selection();
+    let properties = this.render_properties();
     return (
       <div className="Editor">
-        <p>
-          <b>Selected Tiles:</b>
-        </p>
-        {selected_items}
+        <div className="Selection">
+          <h4>Selected Tiles:</h4>
+          {selected_items}
+        </div>
+        <form className="ProperyEditor">
+          <h4>Properties</h4>
+          {properties}
+        </form>
       </div>
     );
   }

@@ -8,13 +8,17 @@ class App extends react.Component {
   constructor(props) {
     super(props);
     this.handleTileClicked = this.handleTileClicked.bind(this);
-    this.state = { selected: [] };
+    let map_data = require("./files/output/inventory.json");
+    console.log(map_data);
+    this.state = { selected: [], map_data: map_data };
   }
   render() {
-    const map_data = require("./files/output/inventory.json");
     return (
       <div className="App">
-        <Map data={map_data} tileClicked={this.handleTileClicked}></Map>
+        <Map
+          data={this.state.map_data}
+          tileClicked={this.handleTileClicked}
+        ></Map>
         <PropertyEditor selected={this.state.selected}></PropertyEditor>
       </div>
     );

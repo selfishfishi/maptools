@@ -1,6 +1,11 @@
 div .Editor {
-    margin: 10px;
-    border: 2px solid black;
-    flex: 1;
-    padding: 20px;
+  margin: 10px;
+  border: 2px solid black;
+  flex: 1;
+  padding: 20px;
+}
+
+div .Selection {
+  background-color: rgba(128, 128, 128, 0.397);
+  padding: 15px;
 }
