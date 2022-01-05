@@ -9,7 +9,6 @@ class App extends react.Component {
     super(props);
     this.handleTileClicked = this.handleTileClicked.bind(this);
     let map_data = require("./files/output/inventory.json");
-    console.log(map_data);
     this.state = { selected: [], map_data: map_data };
   }
   render() {

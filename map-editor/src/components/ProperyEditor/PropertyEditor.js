@@ -2,6 +2,13 @@ import React from "react";
 import "./PropertyEditor.css";
 
 class PropertyEditor extends React.Component {
+  constructor(props) {
+    super(props);
+    // this.handleTileClicked = this.handleTileClicked.bind(this);
+    // let map_data = require("./files/output/inventory.json");
+    this.state = { mintable: true };
+    this.handleInputChange = this.handleInputChange.bind(this);
+  }
   render_selection() {
     let selected_items = [];
     for (let i in this.props.selected) {
@@ -16,17 +23,25 @@ class PropertyEditor extends React.Component {
     return selected_items;
   }
 
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === "checkbox" ? target.checked : target.value;
+    const name = target.name;
+    console.log(name);
+    this.setState({
+      [name]: value,
+    });
+  }
   render_mintable() {
     return (
-      <label>
+      <label key="mintable">
         Mintable:
-        {/* <input
-          name="Mintable"
+        <input
+          name="mintable"
           type="checkbox"
-          checked={this.state.isGoing}
+          checked={this.state.mintable}
           onChange={this.handleInputChange}
-        /> */}
-        ;
+        />
       </label>
     );
   }
