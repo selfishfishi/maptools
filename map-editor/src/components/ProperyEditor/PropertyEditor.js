@@ -61,25 +61,24 @@ class PropertyEditor extends React.Component {
     const options = this.property_values.map((v) => (
       <option value={v}>{v}</option>
     ));
-    return Object.keys(this.state.properties).map((p) => (
-      <div key={p}>
-        <div>
+    return Object.keys(this.state.properties).map((p) => {
+      let drop_downs = Object.keys(this.state.properties[p]).map((p_option) => {
+        return (
+          <label key={p_option}>
+            {p_option}
+            <select value={this.state.value} onChange={this.handleChange}>
+              {options}
+            </select>
+          </label>
+        );
+      });
+      return (
+        <div key={p}>
           <b>{p}</b>
+          <div>{drop_downs}</div>
         </div>
-        <label key="yield">
-          Yield
-          <select value={this.state.value} onChange={this.handleChange}>
-            {options}
-          </select>
-        </label>
-        <label key="gen">
-          Gen
-          <select value={this.state.value} onChange={this.handleChange}>
-            {options}
-          </select>
-        </label>
-      </div>
-    ));
+      );
+    });
   }
   render_properties() {
     let properties = [];
