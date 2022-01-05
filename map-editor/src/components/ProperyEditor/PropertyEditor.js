@@ -19,6 +19,7 @@ class PropertyEditor extends React.Component {
       (e) => (this.state.properties[e] = { yield: 0, gen: 0 })
     );
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleDropdownSelection = this.handleDropdownSelection.bind(this);
   }
   render_selection() {
     let selected_items = [];
@@ -43,6 +44,7 @@ class PropertyEditor extends React.Component {
       [name]: value,
     });
   }
+  handleDropdownSelection(event) {}
   render_mintable() {
     return (
       <label key="mintable">
@@ -58,15 +60,20 @@ class PropertyEditor extends React.Component {
   }
 
   render_tile_properties() {
+    // get the dropdown option values
     const options = this.property_values.map((v) => (
       <option value={v}>{v}</option>
     ));
     return Object.keys(this.state.properties).map((p) => {
+      // get configurable properties
       let drop_downs = Object.keys(this.state.properties[p]).map((p_option) => {
         return (
           <label key={p_option}>
             {p_option}
-            <select value={this.state.value} onChange={this.handleChange}>
+            <select
+              value={this.state.properties[p][p_option]}
+              onChange={this.handleDropdownSelection}
+            >
               {options}
             </select>
           </label>
