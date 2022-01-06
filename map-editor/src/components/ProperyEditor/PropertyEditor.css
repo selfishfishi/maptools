@@ -9,3 +9,25 @@ div .Selection {
   background-color: rgba(128, 128, 128, 0.397);
   padding: 15px;
 }
+
+div .Property {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border: 1px dotted black;
+  padding: 5pt;
+}
+
+div .PropertyTitle {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+div .PropertyTitle {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.Dropdown {
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
