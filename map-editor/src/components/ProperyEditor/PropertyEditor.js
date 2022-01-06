@@ -39,12 +39,20 @@ class PropertyEditor extends React.Component {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
-    console.log(name);
     this.setState({
       [name]: value,
     });
   }
-  handleDropdownSelection(event) {}
+  handleDropdownSelection(event, property_name) {
+    const sub_property_name = event.target.name;
+    const value = event.target.value;
+    this.setState((state, props) => {
+      let new_properties = {};
+      Object.assign(new_properties, state.properties);
+      new_properties[property_name][sub_property_name] = value;
+      return { properties: new_properties };
+    });
+  }
   render_mintable() {
     return (
       <label key="mintable">
@@ -68,14 +76,16 @@ class PropertyEditor extends React.Component {
       // get configurable properties
       let drop_downs = Object.keys(this.state.properties[p]).map((p_option) => {
         return (
-          <div>
+          <div id={p}>
             <label key={p_option}>
               {p_option}
               <select
                 className="Dropdown"
+                name={p_option}
+                blah={p}
                 key={p_option}
                 value={this.state.properties[p][p_option]}
-                onChange={this.handleDropdownSelection}
+                onChange={(event) => this.handleDropdownSelection(event, p)}
               >
                 {options}
               </select>
@@ -83,7 +93,6 @@ class PropertyEditor extends React.Component {
           </div>
         );
       });
-      console.log(p);
       return (
         <div key={p} className="Property">
           <div className="PropertyTitle">{p}</div>
