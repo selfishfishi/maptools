@@ -8,6 +8,7 @@ class App extends react.Component {
   constructor(props) {
     super(props);
     this.handleTileClicked = this.handleTileClicked.bind(this);
+    this.handlePropertyChange = this.handlePropertyChange.bind(this);
     let map_data = require("./files/output/inventory.json");
     this.state = { selected: [], map_data: map_data };
   }
@@ -18,7 +19,10 @@ class App extends react.Component {
           data={this.state.map_data}
           tileClicked={this.handleTileClicked}
         ></Map>
-        <PropertyEditor selected={this.state.selected}></PropertyEditor>
+        <PropertyEditor
+          selected={this.state.selected}
+          onPropertyChange={this.handlePropertyChange}
+        ></PropertyEditor>
       </div>
     );
   }
@@ -37,6 +41,11 @@ class App extends react.Component {
         return { selected: new_selected };
       });
     }
+  }
+
+  handlePropertyChange(selected_tiles, properties) {
+    console.log(selected_tiles);
+    console.log(properties);
   }
 }
 

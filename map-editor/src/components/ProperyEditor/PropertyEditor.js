@@ -69,8 +69,9 @@ class PropertyEditor extends React.Component {
   }
 
   properties_did_change() {
-    console.log("Property Changed");
+    this.props.onPropertyChange(this.props.selected, this.state);
   }
+
   render_tile_properties() {
     // get the dropdown option values
     const options = this.property_values.map((v) => (
