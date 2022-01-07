@@ -39,10 +39,11 @@ class PropertyEditor extends React.Component {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
-    this.setState({
-      [name]: value,
-    });
+    this.setState((state, props) => {
+      return { [name]: value };
+    }, this.properties_did_change);
   }
+
   handleDropdownSelection(event, property_name) {
     const sub_property_name = event.target.name;
     const value = event.target.value;
@@ -51,7 +52,7 @@ class PropertyEditor extends React.Component {
       Object.assign(new_properties, state.properties);
       new_properties[property_name][sub_property_name] = value;
       return { properties: new_properties };
-    });
+    }, this.properties_did_change);
   }
   render_mintable() {
     return (
@@ -67,6 +68,9 @@ class PropertyEditor extends React.Component {
     );
   }
 
+  properties_did_change() {
+    console.log("Property Changed");
+  }
   render_tile_properties() {
     // get the dropdown option values
     const options = this.property_values.map((v) => (
@@ -117,10 +121,7 @@ class PropertyEditor extends React.Component {
           <h4>Selected Tiles:</h4>
           {selected_items}
         </div>
-        <form className="ProperyEditor">
-          <h4>Properties</h4>
-          {properties}
-        </form>
+        <form className="ProperyEditor">{properties}</form>
       </div>
     );
   }
