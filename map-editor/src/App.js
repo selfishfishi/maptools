@@ -44,8 +44,9 @@ class App extends react.Component {
   }
 
   handlePropertyChange(selected_tiles, properties) {
-    console.log(selected_tiles);
-    console.log(properties);
+    selected_tiles.forEach((element) => {
+      element.properties = properties;
+    });
   }
 }
 
