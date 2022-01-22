@@ -16,6 +16,10 @@ copy_tiles:
 
 run:
 	cd ./map-editor && npm start
+
+server: 
+	node ./map-editor/server/server.js
+
 website: tiles inventory copy_tiles run
 
 
