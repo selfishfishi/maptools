@@ -8,7 +8,12 @@ const outputDir = "output";
 const requestListener = function (req, res) {
   switch (req.url) {
     case "/inventory":
-      getInventory(req, res);
+      if (req.method === "GET") {
+        getInventory(req, res);
+      } else {
+        res.writeHead(404);
+       res.end();
+      }
       break;
     default:
       res.writeHead(404);
